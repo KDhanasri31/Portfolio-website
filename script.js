@@ -217,13 +217,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simulate download preparation
             setTimeout(() => {
                 const link = document.createElement('a');
-                link.href = '#'; // Replace with your actual CV URL
+                link.href = '/.DHANASRI_K_RESUME.pdf'; // Replace with your actual CV URL
                 link.download = 'Dhanasri_K_FullStack_Developer_CV.pdf';
                 link.target = '_blank';
                 
                 // Show download instructions
                 showNotification(
-                    '📥 CV download started! Check your Downloads folder.<br>Filename: Dhanasri_K_FullStack_Developer_CV.pdf', 
+                    'Filename: Dhanasri_K_FullStack_Developer_CV.pdf', 
                     'success'
                 );
                 
