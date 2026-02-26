@@ -203,49 +203,40 @@ function showNotification(message, type = 'info') {
 }
 
 // Enhanced CV Download - Updated for Dhanasri
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const downloadBtn = document.getElementById('download-cv');
     
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Change button text and style
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-download"></i> Downloading...';
+        this.classList.add('downloading');
+        
+        // Create temporary download link
+        const link = document.createElement('a');
+        link.href = "./DHANASRI_K_RESUME.pdf";  // ← CHANGE THIS TO YOUR CV FILENAME
+        link.download = 'Dhanasri_K_FullStack_Developer_CV.pdf';  // ← DOWNLOAD FILENAME
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+            this.innerHTML = originalText;
+            this.classList.remove('downloading');
+            this.classList.add('success');
             
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-download"></i> Preparing...';
-            this.classList.add('downloading');
-            
-            // Simulate download preparation
             setTimeout(() => {
-                const link = document.createElement('a');
-                link.href = './DHANASRI_K_RESUME.pdf'; 
-                link.download = 'Dhanasri_K_FullStack_Developer_CV.pdf';
-                link.target = '_blank';
-                
-                // Show download instructions
-                showNotification(
-                    'Filename: Dhanasri_K_FullStack_Developer_CV.pdf', 
-                    'success'
-                );
-                
-                // Trigger download
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Reset button
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.classList.remove('downloading');
-                    this.classList.add('success');
-                    
-                    setTimeout(() => {
-                        this.classList.remove('success');
-                    }, 1500);
-                }, 2000);
-            }, 800);
-        });
-    }
+                this.classList.remove('success');
+            }, 1000);
+        }, 2000);
+    });
 });
+
 
 // Active navigation link highlighting
 window.addEventListener('scroll', () => {
@@ -349,5 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 
 
