@@ -323,30 +323,29 @@ window.addEventListener('load', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-const modal = document.getElementById('videoModal');
-const video = document.getElementById('demoVideo');
-const closeBtn = document.querySelector('.close-video');
-const demoButtons = document.querySelectorAll('.demo-btn');
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('youtubeFrame');
+    const closeBtn = document.querySelector('.close-video');
+    const demoButtons = document.querySelectorAll('.demo-btn');
 
-demoButtons.forEach(button => {
-button.addEventListener('click', () => {
-const videoSrc = button.getAttribute('data-video');
-video.querySelector('source').src = videoSrc;
-video.load();
-modal.style.display = 'flex';
-});
-});
+    demoButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const youtubeLink = button.getAttribute('data-youtube');
+            iframe.src = youtubeLink + "?autoplay=1";
+            modal.style.display = 'flex';
+        });
+    });
 
-closeBtn.addEventListener('click', () => {
-modal.style.display = 'none';
-video.pause();
-});
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        iframe.src = "";
+    });
 
-window.addEventListener('click', (e) => {
-if (e.target === modal) {
-modal.style.display = 'none';
-video.pause();
-}
-});
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            iframe.src = "";
+        }
+    });
 
 });
