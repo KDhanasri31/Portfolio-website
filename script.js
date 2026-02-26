@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simulate download preparation
             setTimeout(() => {
                 const link = document.createElement('a');
-                link.href = '/.DHANASRI_K_RESUME.pdf'; // Replace with your actual CV URL
+                link.href = 'DHANASRI_K_RESUME.pdf'; // Replace with your actual CV URL
                 link.download = 'Dhanasri_K_FullStack_Developer_CV.pdf';
                 link.target = '_blank';
                 
@@ -349,3 +349,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
